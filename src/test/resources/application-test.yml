@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/qa_assist_test
+    username: test_user
+    password: test_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+  ai:
+    openai:
+      api-key: test-api-key
+
+qa-assist:
+  llm:
+    provider: openai
+    model: gpt-4-turbo
+    temperature: 0.1
+    max-tokens: 100
+    timeout-seconds: 10
+    retry:
+      max-attempts: 1
+      backoff-ms: 100
+
+  jira:
+    base-url: https://test.atlassian.net
+    api-token: test-token
+    email: test@example.com
+
+  gitlab:
+    base-url: https://test.gitlab.com
+    token: test-token
+
+  global-context:
+    base-path: ./test-global-context
+    cache-ttl-minutes: 5
+
+  pipeline:
+    quality-gates:
+      require-json-schema: false
+      require-traceability: false
+      min-coverage-percent: 0
+    auto-mode: false

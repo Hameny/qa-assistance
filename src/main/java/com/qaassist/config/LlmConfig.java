@@ -7,6 +7,7 @@ import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
 
 @Configuration
 public class LlmConfig {
@@ -18,7 +19,7 @@ public class LlmConfig {
   }
 
   @Bean
-  public OpenAiChatModel openAiChatModel() {
+  public OpenAiChatModel openAiChatModel(@Value("${spring.ai.openai.api-key:#{environment['OPENAI_API_KEY']}}") String apiKey) {
     var llm = properties.getLlm();
     if (llm == null) {
       throw new IllegalStateException("LLM properties are not configured");
@@ -26,7 +27,7 @@ public class LlmConfig {
 
     var openAiApi = OpenAiApi.builder()
         .baseUrl("https://api.openai.com/v1")
-        .apiKey(System.getenv("OPENAI_API_KEY"))
+        .apiKey(apiKey)
         .build();
 
     var options = OpenAiChatOptions.builder()

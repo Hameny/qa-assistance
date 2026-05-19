@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Test Suite Schema",
+  "description": "Schema for QA test suite definition",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Test suite name"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Version in semver format"
+    },
+    "description": {
+      "type": "string",
+      "description": "Test suite description"
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique test identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Test name"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["api", "ui", "integration", "unit"],
+            "description": "Test type"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["critical", "high", "medium", "low"],
+            "description": "Test priority"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "description": "Action to perform"
+                },
+                "expectedResult": {
+                  "type": "string",
+                  "description": "Expected result"
+                }
+              },
+              "required": ["action", "expectedResult"]
+            }
+          },
+          "jiraIssueId": {
+            "type": "string",
+            "description": "Linked Jira issue ID"
+          },
+          "gitlabTestId": {
+            "type": "string",
+            "description": "Linked GitLab test ID"
+          }
+        },
+        "required": ["id", "name", "type"]
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "author": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["name", "version", "tests"]
+}
