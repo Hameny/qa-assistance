@@ -1,0 +1,68 @@
+# src/main/resources/application.yml
+spring:
+  application:
+    name: qa-assistance
+
+  profiles:
+    active: dev
+
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/qa_assist
+    username: qa_user
+    password: ${DB_PASSWORD:changeme}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterAccess=1h
+
+# Настройки приложения
+qa-assist:
+  llm:
+    provider: openai  # или anthropic, claude
+    model: gpt-4-turbo
+    temperature: 0.1
+    max-tokens: 4096
+    timeout-seconds: 120
+    retry:
+      max-attempts: 3
+      backoff-ms: 1000
+
+  jira:
+    base-url: https://your-company.atlassian.net
+    api-token: ${JIRA_API_TOKEN}
+    email: ${JIRA_EMAIL}
+
+  gitlab:
+    base-url: https://gitlab.com
+    token: ${GITLAB_TOKEN}
+
+  global-context:
+    base-path: ./global-context
+    cache-ttl-minutes: 30
+
+  pipeline:
+    quality-gates:
+      require-json-schema: true
+      require-traceability: true
+      min-coverage-percent: 80
+    auto-mode: false  # включить авто-мердж при полном прохождении
