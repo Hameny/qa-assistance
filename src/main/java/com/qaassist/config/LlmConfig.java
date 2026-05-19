@@ -1,4 +1,4 @@
-package com.config;
+package com.qaassist.config;
 
 public class LlmConfig {
 
