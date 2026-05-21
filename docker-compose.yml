@@ -1,38 +1,27 @@
-# docker-compose.yml
 version: '3.8'
-
 services:
-  postgres:
-    image: postgres:16-alpine
-    container_name: qa-assist-db
+  qa-assist:
+    build: .
+    ports: ["8080:8080"]
     environment:
-      POSTGRES_DB: qa_assist
-      POSTGRES_USER: qa_user
-      POSTGRES_PASSWORD: changeme
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./src/main/resources/db/migration:/docker-entrypoint-initdb.d
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/qa_prod
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASS}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - JIRA_API_TOKEN=${JIRA_TOKEN}
+      - GITLAB_TOKEN=${GITLAB_TOKEN}
+    depends_on: [db]
+    restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U qa_user -d qa_assist"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  minio:  # Для хранения артефактов/вложений (опционально)
-    image: minio/minio:latest
-    container_name: qa-assist-storage
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  db:
+    image: postgres:16-alpine
     environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
-    ports:
-      - "9000:9000"
-      - "9001:9001"
-    command: server /data --console-address ":9001"
-    volumes:
-      - minio_data:/data
-
-volumes:
-  postgres_data:
-  minio_data:
+      POSTGRES_DB: qa_prod
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+volumes: { pgdata: }

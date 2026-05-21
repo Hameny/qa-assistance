@@ -1,11 +1,31 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=5000,expireAfterWrite=2h
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+
 qa:
   assist:
-    llm:
-      temperature: 0.05
-      timeout-seconds: 90
+    pipeline:
+      auto-mode: true
+      quality-gates:
+        min-coverage-percent: 85
     debug:
       enabled: false
       dump-llm-responses: false
-    pipeline:
-      auto-mode: true
-      parallel-stages-max: 8
