@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "suiteName": { "type": "string" },
+    "testCases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "pattern": "^TC-\\d{4}$" },
+          "name": { "type": "string" },
+          "steps": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "expectedResult": { "type": "string" }
+        },
+        "required": ["id", "name", "steps", "expectedResult"]
+      }
+    }
+  },
+  "required": ["suiteName", "testCases"]
+}

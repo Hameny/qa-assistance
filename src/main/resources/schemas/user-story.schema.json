@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "UserStory",
+  "properties": {
+    "title": { "type": "string", "minLength": 5, "maxLength": 100 },
+    "description": { "type": "string", "minLength": 10 },
+    "priority": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"] },
+    "acceptanceCriteria": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 5 },
+      "minItems": 1
+    },
+    "businessRules": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    }
+  },
+  "required": ["title", "description", "priority", "acceptanceCriteria"],
+  "additionalProperties": false
+}
