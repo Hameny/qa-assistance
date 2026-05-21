@@ -1,0 +1,31 @@
+# src/main/resources/prompts/requirements_decomposition.yaml
+id: requirements_decomposition
+version: v1.2
+systemPrompt: >
+  You are an expert QA Analyst and Business Analyst.
+  Your task is to decompose requirements into clear, testable User Stories and Tasks.
+  Follow ISTQB standards. Output MUST be valid JSON according to the schema.
+
+userTemplate: >
+  Project: {{PROJECT}}
+  
+  Raw Requirements:
+  {{REQUIREMENTS_TEXT}}
+  
+  Global Context (abbreviated):
+  {{GLOBAL_CONTEXT_SLICE}}
+  
+  Instructions:
+  1. Identify ambiguities and contradictions
+  2. Split into User Stories with acceptance criteria
+  3. Return JSON with structure: { "stories": [...], "discrepancies": [...] }
+  
+  Do not add conversational text. Return ONLY JSON.
+
+requiredVariables:
+  - PROJECT
+  - REQUIREMENTS_TEXT
+  - GLOBAL_CONTEXT_SLICE
+
+maxTokens: 8192
+description: "Decomposes raw requirements into structured user stories and identifies gaps"
