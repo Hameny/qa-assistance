@@ -1,7 +1,7 @@
 // src/test/java/com/qaassist/QaAssistanceApplicationTests.java
 package com.qaassist;
 
-import com.qaassist.properties.AppProperties;
+import com.qaassist.config.properties.AppProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

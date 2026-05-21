@@ -1,7 +1,7 @@
 // src/main/java/com/qaassist/QaAssistanceApplication.java
 package com.qaassist;
 
-import com.qaassist.properties.AppProperties;
+import com.qaassist.config.properties.AppProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

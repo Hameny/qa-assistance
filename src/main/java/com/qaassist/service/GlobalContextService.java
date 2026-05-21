@@ -2,7 +2,7 @@ package com.qaassist.service;
 
 import com.qaassist.domain.context.*;
 import com.qaassist.infra.context.FileContextLoader;
-import com.qaassist.properties.AppProperties;
+import com.qaassist.config.properties.AppProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service

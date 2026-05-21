@@ -2,7 +2,7 @@ package com.qaassist.config;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qaassist.properties.AppProperties;
+import com.qaassist.config.properties.AppProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

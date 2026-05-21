@@ -1,0 +1,10 @@
+qa:
+  assist:
+    llm:
+      temperature: 0.3  # Более "творческий" режим для разработки
+      timeout-seconds: 60
+    debug:
+      enabled: true
+      dump-llm-responses: true
+    pipeline:
+      auto-mode: false

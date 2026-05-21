@@ -1,6 +1,6 @@
 package com.qaassist.config;
 
-import com.qaassist.properties.AppProperties;
+import com.qaassist.config.properties.AppProperties;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;

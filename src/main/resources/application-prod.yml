@@ -1,0 +1,11 @@
+qa:
+  assist:
+    llm:
+      temperature: 0.05
+      timeout-seconds: 90
+    debug:
+      enabled: false
+      dump-llm-responses: false
+    pipeline:
+      auto-mode: true
+      parallel-stages-max: 8

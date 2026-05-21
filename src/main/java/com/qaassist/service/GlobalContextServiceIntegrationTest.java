@@ -2,9 +2,6 @@
 package com.qaassist.service;
 
 import com.qaassist.domain.context.ContextQuery;
-import com.qaassist.domain.context.ContextSlice;
-import com.qaassist.infra.context.FileContextLoader;
-import com.qaassist.properties.AppProperties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;

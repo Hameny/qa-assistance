@@ -1,7 +1,7 @@
 package com.qaassist.infra.context;
 
 import com.qaassist.domain.context.ContextEntryDto;
-import com.qaassist.properties.AppProperties;
+import com.qaassist.config.properties.AppProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
