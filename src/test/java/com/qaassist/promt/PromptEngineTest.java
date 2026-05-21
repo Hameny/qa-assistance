@@ -1,7 +1,10 @@
-package com.qaassist.prompt;
+package com.qaassist.promt;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.qaassist.prompt.PromptRegistry;
+import com.qaassist.prompt.PromptRenderer;
+import com.qaassist.prompt.PromptTemplate;
+import com.qaassist.prompt.PromptValidationException;
+import com.qaassist.prompt.PromptValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,11 +32,11 @@ class PromptEngineTest {
       {
         templates.put("decomp:v1.0", new PromptTemplate(
             "decomp", "v1.0",
-            "You are a QA expert.",
+            "Ты QA expert.",
             "Project: {{PROJECT}}\nRequirements: {{REQUIREMENTS}}",
             Set.of("PROJECT", "REQUIREMENTS"),
             4000,
-            "Test template"
+            "Тестовый шаблон"
         ));
       }
     };
@@ -42,10 +45,10 @@ class PromptEngineTest {
   @Test
   @DisplayName("Рендеринг с подстановкой переменных и defaults")
   void rendersWithVariablesAndDefaults() {
-    String template = "Hello {{NAME}}, project is {{PROJECT:Unknown}}";
+    String template = "Привет {{NAME}}, Проект - {{PROJECT:Unknown}}";
     String result = renderer.render(template, Map.of("NAME", "Alice"));
 
-    assertThat(result).isEqualTo("Hello Alice, project is Unknown");
+    assertThat(result).isEqualTo("Привет Павел, проект - Unknown");
   }
 
   @ParameterizedTest
