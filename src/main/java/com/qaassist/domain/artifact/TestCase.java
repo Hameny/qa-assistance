@@ -1,6 +1,7 @@
 // src/main/java/com/qaassist/domain/artifact/TestCase.java
 package com.qaassist.domain.artifact;
 
+import com.qaassist.domain.artifact.TestStep.UiLocator;
 import com.qaassist.domain.common.Priority;
 import com.qaassist.domain.common.TestType;
 import com.qaassist.domain.requirement.Requirement;
@@ -93,6 +94,10 @@ public record TestCase(
   // Utility methods для агентов
   public boolean coversRequirement(String requirementId) {
     return traceability().requirementIds().contains(requirementId);
+  }
+
+  public TestStep withUiLocator(UiLocator newLocator) {
+    return new TestStep(id, action, expected, estimatedDurationSeconds, assertions, testDataRef, Optional.of(newLocator), apiCall);
   }
 
   public int estimatedExecutionTimeSeconds() {

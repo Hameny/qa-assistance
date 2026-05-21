@@ -10,7 +10,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Map;
 import java.util.Set;
-import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -40,7 +39,7 @@ class PromptEngineTest {
     };
   }
 
-  @org.testng.annotations.Test
+  @Test
   @DisplayName("Рендеринг с подстановкой переменных и defaults")
   void rendersWithVariablesAndDefaults() {
     String template = "Hello {{NAME}}, project is {{PROJECT:Unknown}}";

@@ -10,7 +10,6 @@ import org.springframework.ai.chat.model.ChatModel;
 
 import java.util.Map;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;

@@ -1,14 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:16-alpine:///qa_assist_test?TC_DAEMON=true
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  jpa:
+    hibernate:
+      ddl-auto: validate # Flyway управляет схемой
+    show-sql: false
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=10m
+
 qa:
   assist:
     llm:
       provider: mock
-      model: test-model
-      temperature: 0.0
-    jira:
-      base-url: https://test.atlassian.net
-    gitlab:
-      base-url: https://test.gitlab.com
     debug:
       mock-external-services: true
-    pipeline:
-      parallel-stages-max: 1  # Последовательное выполнение для стабильности тестов

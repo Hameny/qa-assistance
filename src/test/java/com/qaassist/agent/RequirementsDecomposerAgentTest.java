@@ -1,8 +1,6 @@
 package com.qaassist.agent;
 
 import com.qaassist.agent.dto.LlmDecompositionResponse;
-import com.qaassist.agent.mapper.DecompositionMapper;
-import com.qaassist.agent.validator.DecompositionValidator;
 import com.qaassist.llm.LlmClientService;
 import com.qaassist.prompt.PromptService;
 import com.qaassist.prompt.model.RenderedPrompt;
@@ -18,10 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
-import static reactor.core.publisher.Mono.when;
 
 @ExtendWith(MockitoExtension.class)
 class RequirementsDecomposerAgentTest {

@@ -46,5 +46,9 @@ public record TestStep(
       Optional<List<Header>> headers
   ) {}
 
+  public TestStep withUiLocator(UiLocator newLocator) {
+    return new TestStep(id, action, expected, estimatedDurationSeconds, assertions, testDataRef, Optional.of(newLocator), apiCall);
+  }
+
   public record Header(@NotBlank String name, @NotBlank String value) {}
 }

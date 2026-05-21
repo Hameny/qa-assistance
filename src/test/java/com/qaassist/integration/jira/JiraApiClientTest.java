@@ -1,7 +1,7 @@
+// src/test/java/com/qaassist/integration/jira/JiraApiClientTest.java
 package com.qaassist.integration.jira;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import com.qaassist.config.properties.AppProperties;
 import com.qaassist.domain.external.JiraIssue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
