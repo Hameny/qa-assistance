@@ -1,4 +1,3 @@
-// src/main/java/com/qaassist/config/WebClientConfig.java
 package com.qaassist.config;
 
 import com.qaassist.properties.AppProperties;

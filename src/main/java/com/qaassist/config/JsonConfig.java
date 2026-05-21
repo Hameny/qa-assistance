@@ -1,4 +1,3 @@
-// src/main/java/com/qaassist/config/JsonConfig.java
 package com.qaassist.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
